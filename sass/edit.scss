@@ -1,0 +1,107 @@
+.text-block {
+    margin: 0.3rem 0.2rem 0;
+    padding: 0 0.2rem;
+    @extend %relative;
+    @extend %bkgf5f5f5;
+    @extend %font-zero;
+    
+    textarea {
+        width: 74.62686567164179%;
+        height: 100%;
+        line-height: 0.44rem;
+        font-size: 0.3rem;
+        @extend %bkgf5f5f5;
+        @extend %color1a1a1a;
+    }
+    
+    input[type=number] {
+        width: 100%;
+        height: 0.9rem;
+        font-size: 0.3rem;
+        @extend %bkgf5f5f5;
+        @extend %color1a1a1a;
+    }
+    
+    input[type=file] {
+        height: 1.3rem;
+        opacity: 0;
+    }
+    
+    input[type=file], .upload-pic {
+        top: 0.3rem;
+        right: 0.3rem;
+        width: 1.3rem;
+        @extend %absolute;
+    }
+    
+    .upload-pic {
+        height: 0.64rem;
+        line-height: 0.64rem;
+        padding-top: 0.66rem;
+        font-size: 0.24rem;
+        border-radius: 0.06rem;
+        @extend %text-align;
+        @extend %bkgfff;
+        @extend %color999;
+        @extend %before;
+        @extend %after;
+        
+        &:before {
+            top: 0.41rem;
+            left: 50%;
+            width: 0.33rem;
+            height: 0.03rem;
+            margin-left: -0.165rem;
+            @extend %bkg999;
+        }
+    
+        &:after {
+            top: 0.26rem;
+            left: 50%;
+            width: 0.03rem;
+            height: 0.33rem;
+            margin-left: -0.015rem;
+            @extend %bkg999;
+        }
+    }
+    
+    .count {
+        bottom: 0.12rem;
+        right: 0.52rem;
+        font-size: 0.24rem;
+        @extend %absolute;
+        @extend %color999;
+    }
+}
+
+.textarea {
+    height: 2.46rem;
+    padding-top: 0.22rem;
+    padding-bottom: 0.22rem;
+}
+
+.statement {
+    height: 0.88rem;
+    line-height: 0.44rem;
+    margin: 0.22rem 0.2rem 0;
+    font-size: 0.3rem;
+    @extend %color999;
+}
+
+.edit-btn {
+    height: 0.84rem;
+    line-height: 0.84rem;
+    margin-top: 0.92rem;
+    @extend %text-align;
+    @extend %font-zero;
+    
+    button {
+        width: 4.11rem;
+        height: 100%;
+        font-size: 0.32rem;
+        border-radius: 0.42rem;
+        @extend %colorfff;
+        @include normalGradient(linear, left, #ff7747, #f71e4c);
+        @include boxShadow(1px 3px 2px #fac0c5);
+    }
+}

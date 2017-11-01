@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html data-rem="true">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>意见反馈-对话</title>
+    <meta name="format-detection" content="telephone=no" />
+    <!-- build:css css/privateMessage.{{version}}.css?ts={{ts}}-->
+    <link rel="stylesheet" type="text/css" href="./css/feedback.css" />
+    <link rel="stylesheet" type="text/css" href="./css/privateMessage.css" />
+    <!-- /build -->
+    <script type="text/javascript" src="//s2.h5.itc.cn/touch/fox/js/??seajs-03c5c6ba18.js,zepto-9e0ad47abe.js,rem-2fd53b425f.js"></script>
+</head>
+<body>
+    <div class="wrapper pull" id="wrapper">
+        <ul class="message-list iscroll list-loading" id="messageList"></ul>
+    </div>
+    <div class="loading-icon transparent" id="loading"></div>
+    <div class="display-layer" id="displayLayer" style="display: none"><img class="wide reset" src="" /></div>
+    <div class="bottom-module unfinished" id="bottomModule">
+        <div class="send-box up" id="sendBox">
+            <button type="button" class="shift to-menu"></button>
+            <input class="input" id="contentInput" type="text" maxlength="300" />
+            <label class="send" for="uploadPic"></label>
+            <input class="send" id="uploadPic" type="file" multiple="multiple" accept="image/jpg,image/png,image/jpeg" />
+        </div>
+        <div class="menu down" id="menuBox">
+            <button type="button" class="shift to-send"></button>
+            <button type="button" class="trash-all" id="trashAll"></button>
+        </div>
+    </div>
+    <div class="alpha" id="alphaLayer" style="display: none"></div>
+    <div class="popup" id="popupBox">
+        <p class="content"><span class="text"></span></p>
+        <div class="btn">
+            <button type="button" class="button confirm">确认</button>
+            <button type="button" class="button cancel">取消</button>
+        </div>
+    </div>
+    
+    <script id="listTemplate" type="text/x-handlebars-template">
+        {{#each this.data}}
+        <li class="message-box" id="{{pl_id}}">
+            <div class="time-info"{{isSameTime this.createTime}}>{{dateTime this.createTime}}</div>
+            <div class="main-info{{sender this.senderUid}} {{messageType this.contentType}}">
+                {{#portrait this}}
+                <div class="portrait">
+                    <a class="to-portrait" href="{{menuLink}}user.html?user_id={{senderUid}}">
+                        <img src="{{../../touser.toPic}}" width="100%" />
+                    </a>
+                </div>
+                {{else}}
+                <div class="portrait">
+                    <img src="{{../../self.selfPic}}" width="100%" />
+                </div>
+                {{/portrait}}
+                {{messageContent this}}
+            </div>
+        </li>
+        {{/each}}
+    </script>
+    
+    <script id="sendTemplate" type="text/x-handlebars-template">
+        <div class="time-info"{{isSameTime this.datetime}}>{{dateTime this.datetime}}</div>
+        <div class="main-info mein {{senderMessageType content}}">
+            <div class="portrait">
+                <img src="{{this.senderPic}}" width="100%" />
+            </div>
+            {{sendMessageContent this.content}}
+        </div>
+    </script>
+    
+    <script id="menuTemplate" type="text/x-handlebars-template">
+        <li class="item"><a id="menuHome" href="{{menuLink}}user.html?user_id={{toUid}}">用户主页</a></li>
+        {{#if isShop}}
+        <li class="item"><a id="menuShop" href="{{shopLink}}seller.html?otherUid={{toUid}}">商家店铺</a></li>
+        {{/if}}
+        {{#if touserIsPgc}}
+        <li class="item"><a id="menuFans" href="{{itemLink}}item.html?user_id={{toUid}}">粉丝社区</a></li>
+        {{/if}}
+    </script>
+    
+    <script id="instantMessageTemplate" type="text/x-handlebars-template">
+        {{#isRelated this}}
+        <li class="message-box" data-im="yes">
+            <div class="time-info"{{isSameTime this.createTime}}>{{dateTime this.createTime}}</div>
+            <div class="main-info{{sender this.senderUid}} {{messageType this.contentType}}">
+                {{#portrait this}}
+                <div class="portrait">
+                    <a class="to-portrait" href="{{menuLink}}user.html?user_id={{senderUid}}">
+                        <img src="{{toPic}}" width="100%" />
+                    </a>
+                </div>
+                {{else}}
+                <div class="portrait">
+                    <img src="{{selfPic}}" width="100%" />
+                </div>
+                {{/portrait}}
+                {{messageContent this}}
+            </div>
+        </li>
+        {{/isRelated}}
+    </script>
+    
+    <script type="text/javascript">
+        seajs.config({
+            map: [
+                ['.js', '.js?v1.1.3']
+            ],
+            base: './js/',
+            alias: {
+                'foxUI': '//s1.h5.itc.cn/touch/pmall/js/foxUI.pmall.js',
+                'handlebars': '//s1.h5.itc.cn/touch/fox/js/libs/handlebars.js'
+                //aliasReplace{{primsgAll}}
+            },
+            preload: ['handlebars', 'foxUI'
+                //preloadReplace{{primsgAll}}
+            ],
+            charset: 'utf-8'
+        });
+        
+        seajs.use('feedback', function (feedback) {
+            feedback.init();
+        });
+    </script>
+</body>
+</html>

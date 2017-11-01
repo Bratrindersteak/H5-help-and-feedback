@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html data-rem="true">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>意见反馈</title>
+    <meta name="format-detection" content="telephone=no" />
+    <!-- build:css css/privateMessage.{{version}}.css?ts={{ts}}-->
+    <link rel="stylesheet" type="text/css" href="./css/feedback.css" />
+    <!-- /build -->
+    <script type="text/javascript" src="//s2.h5.itc.cn/touch/fox/js/??seajs-03c5c6ba18.js,zepto-9e0ad47abe.js,rem-2fd53b425f.js"></script>
+</head>
+<body id="edit">
+    <div class="text-block textarea">
+        <textarea class="" id="" placeholder="请详细描述问题的操作步骤或建议"></textarea>
+        <label class="upload-pic" for="uploadPic">添加图片</label>
+        <input type="file" id="uploadPic" />
+        <span class="count"><i id="wordCount">0</i>/150</span>
+    </div>
+    <div class="text-block">
+        <input type="number" id="contactWay" placeholder="请输入您的电话/QQ" />
+    </div>
+    <p class="statement">我们会确保您的隐私安全，请放心填写电话，我们仅  在必要时联系您，寻求您的有偿帮助。</p>
+    <div class="edit-btn"><button type="button">发送</button></div>
+    <script type="text/javascript">
+        seajs.config({
+            map: [
+                ['.js', '.js?v1.1.3']
+            ],
+            base: './js/',
+            alias: {
+                'foxUI': '//s1.h5.itc.cn/touch/pmall/js/foxUI.pmall.js',
+                'handlebars': '//s1.h5.itc.cn/touch/fox/js/libs/handlebars.js'
+                //aliasReplace{{primsgAll}}
+            },
+            preload: ['handlebars', 'foxUI'
+                //preloadReplace{{primsgAll}}
+            ],
+            charset: 'utf-8'
+        });
+    
+        seajs.use('feedback', function (feedback) {
+            feedback.init();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+.title-module {
+	height: 1.1rem;
+	line-height: 1.1rem;
+	border-bottom: 1px solid #e8e8e8;
+	@extend %relative;
+
+	.title {
+		padding-left: 0.3rem;
+		font-size: 0.32rem;
+		@extend %color1a1a1a;
+	}
+
+	.more-btn {
+		top: 0;
+		right: 0;
+		padding: 0 0.3rem;
+		font-size: 0.26rem;
+		z-index: 1;
+		@extend %absolute;
+		@extend %color999;
+	}
+}
+
+.hot-list {
+	@include boxShadow(0px 5px 8px #f6f6f6);
+
+	li {
+		height: 1.1rem;
+		line-height: 1.1rem;
+		border-bottom: 1px solid #e8e8e8;
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+
+	.link {
+		padding-left: 0.3rem;
+		padding-right: 0.8rem;
+		font-size: 0.3rem;
+		@extend %block;
+		@extend %relative;
+		@extend %color1a1a1a;
+		@extend %before;
+		@extend %after;
+		@extend %single-row-ellipsis;
+
+		&:before {
+			top: 50%;
+			right: 0.3rem;
+			width:0.16rem;
+			height: 0.04rem;
+			margin-top: -0.06rem;
+			@extend %bkgbfbfbf;
+			@include transform(45);
+		}
+
+		&:after {
+			top: 50%;
+			right: 0.3rem;
+			width:0.16rem;
+			height: 0.04rem;
+			margin-top: 0.04rem;
+			@extend %bkgbfbfbf;
+			@include transform(-45);
+		}
+	}
+}
+
+.module-list {
+	@extend %flex-box;
+
+	li {
+		width:33.333333%;
+		height: 1.7rem;
+		border-right: 1px solid #e8e8e8;
+		border-bottom: 1px solid #e8e8e8;
+		@extend %flex-elements-none;
+		@extend %box-sizing;
+		@extend %text-align;
+
+		&:nth-child(3n) {
+			border-right: none;
+		}
+	}
+
+	.link {
+		height: 0.26rem;
+		line-height: 0.26rem;
+		padding: 1.12rem 0 0.32rem;
+		font-size: 0.26rem;
+		@extend %block;
+		@extend %relative;
+		@extend %color1a1a1a;
+		@extend %before;
+		@extend %after;
+
+		&:after {
+			top: 0.12rem;
+			left: 50%;
+			width: 1rem;
+			height: 1rem;
+			margin-left: -0.5rem;
+			background: url(../img/feedback-module.png) no-repeat;
+			background-size: 50px 300px;
+		}
+	}
+
+	@for $i from 1 through 6 {
+		.icon-#{$i} {
+			&:after {
+				background-position: 0 ( - ( $i - 1 ) * 50 ) + px;
+			}
+		}
+	}
+
+	.touch {
+		@extend %bkgf0f0f0;
+	}
+}
+
+.feedback-btn {
+	height: 0.9rem;
+	line-height: 0.9rem;
+	margin-top: 0.6rem;
+	@extend %text-align;
+
+	a {
+		font-size: 0.32rem;
+		@extend %block;
+		@extend %colorfff;
+		@include normalGradient(linear, left, #ff7747, #f71e4c);
+	}
+}
