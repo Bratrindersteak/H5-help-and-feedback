@@ -1,0 +1,139 @@
+[{
+  "label": "官方联系方式",
+  "children": [{
+    "label": {
+      "text": "官方反馈QQ群：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "435505340",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "官方反馈邮箱：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "fankui@sohu-inc.com",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "官方反馈微信：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "sohtv-userservice",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "官方反馈微博：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "搜狐视频用户服务",
+      "isMarked": false
+    }]
+  }, {
+    "label": {
+      "text": "工作时间：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "工作日 09:00-22:00",
+      "isMarked": false
+    }, {
+      "label": "节假日 09:00-21:00",
+      "isMarked": false
+    }]
+  }]
+}, {
+  "label": "会员问题联系方式",
+  "children": [{
+    "label": {
+      "text": "会员官方客服QQ：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "2220979565",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "官方反馈邮箱：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "sohu@contact.sohu.com",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "更多咨询",
+      "isMarked": true
+    },
+    "children": []
+  }, {
+    "label": {
+      "text": "会员客服电话：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "95105959  4008816666",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "工作时间：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "08:00-20:00（节假日不休）",
+      "isMarked": false
+    }]
+  }]
+}, {
+  "label": "",
+  "children": [{
+    "label": {
+      "text": "会员官方服务微信：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "sohufilm",
+      "isMarked": true
+    }]
+  }, {
+    "label": {
+      "text": "工作时间：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "09:00-18:00（工作日）",
+      "isMarked": false
+    }]
+  }]
+}, {
+  "label": "关于我们",
+  "children": [{
+    "label": {
+      "text": "官方微信：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "搜狐视频移动客户端（sohutvapp)",
+      "isMarked": false
+    }]
+  }, {
+    "label": {
+      "text": "官方微博：",
+      "isMarked": false
+    },
+    "children": [{
+      "label": "搜狐视频",
+      "isMarked": false
+    }]
+  }]
+}]

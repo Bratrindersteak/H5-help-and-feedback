@@ -1,0 +1,24 @@
+{
+  "sendBox": {
+    "placeholder": "点击输入您的意见"
+  },
+  "chatlist": [{
+    "type": 1,
+    "content": "Hi",
+    "createtime": 1509621695445,
+    "profile": "",
+    "status": 0
+  }, {
+    "type": 2,
+    "content": "Hello",
+    "createtime": 1509621695445,
+    "profile": "",
+    "status": 0
+  }, {
+    "type": 1,
+    "content": "Have a nice day",
+    "createtime": 1509621695445,
+    "profile": "",
+    "status": 1
+  }]
+}

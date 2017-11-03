@@ -1,4 +1,8 @@
-.contact-module {
+@import 'reset';
+@import 'initialization';
+@import 'container';
+
+.contact-us-module {
     padding: 0.2rem 0.3rem;
     
     &:nth-child(2n) {
@@ -21,18 +25,35 @@
     .info {
         line-height: 0.48rem;
         padding: 0.09rem 0;
+    }
+
+    .label {
+        display: inline-block;
+        font-weight: normal;
+        font-size: 0.28rem;
+        vertical-align: top;
+        @extend %color1a1a1a;
+    }
+
+    .children {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    .child {
         font-size: 0.28rem;
         @extend %color1a1a1a;
     }
-    
-    mark {
+
+    .marked {
         background-color: transparent;
         @extend %color007aff;
     }
-    
-    .more {
+
+    .fold {
         @extend %relative;
         @extend %after;
+        @extend %color007aff;
         
         &:after {
             top: 50%;

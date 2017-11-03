@@ -1,3 +1,7 @@
+@import 'reset';
+@import 'initialization';
+@import 'container';
+
 .text-block {
     margin: 0.3rem 0.2rem 0;
     padding: 0 0.2rem;
@@ -100,8 +104,8 @@
         height: 100%;
         font-size: 0.32rem;
         border-radius: 0.42rem;
+        background-image: linear-gradient(left, #ff7747, #f71e4c);
         @extend %colorfff;
-        @include normalGradient(linear, left, #ff7747, #f71e4c);
         @include boxShadow(1px 3px 2px #fac0c5);
     }
 }
