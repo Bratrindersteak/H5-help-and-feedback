@@ -1,1 +1,1 @@
-import '../sass/edit.scss';
+import '../sass/send.scss';

@@ -5,7 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         contact: __dirname + '/src/contactUS',
-        edit: __dirname + '/src/edit.js',
+        send: __dirname + '/src/send.js',
         im: __dirname + '/src/im.js',
     },
     output: {
@@ -64,9 +64,9 @@ module.exports = {
             title: '联系我们',
         }),
         new HtmlWebpackPlugin({
-            template: __dirname + '/public/edit.html',
-            filename: 'edit.html',
-            chunks: ['edit'],
+            template: __dirname + '/public/send.html',
+            filename: 'send.html',
+            chunks: ['send'],
             inject: true,
             title: '意见反馈',
         }),
