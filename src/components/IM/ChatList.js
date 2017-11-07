@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 const ChatList = () => (
-    <ul className="message-list iscroll list-loading" id="messageList">
+    <ul className="message-list iscroll">
         <li className="message-box">
             <div className="time-info">2017-11-02 19:35</div>
             <div className="main-info text clear">

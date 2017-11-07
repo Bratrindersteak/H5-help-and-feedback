@@ -5,8 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
     entry: {
         contact: __dirname + '/src/contactUS',
-        send: __dirname + '/src/send.js',
-        im: __dirname + '/src/im.js',
+        im: __dirname + '/src/im',
     },
     output: {
         path: path.resolve(__dirname + '/build'),
@@ -42,7 +41,7 @@ module.exports = {
                     },
                 ],
             }, {
-                test: /\.(jpg|png|gif)$/,
+                test: /\.(jpg|png|gif|svg)$/,
                 use: [{
                     loader: 'url-loader',
                     options: {
@@ -64,18 +63,11 @@ module.exports = {
             title: '联系我们',
         }),
         new HtmlWebpackPlugin({
-            template: __dirname + '/public/send.html',
-            filename: 'send.html',
-            chunks: ['send'],
-            inject: true,
-            title: '意见反馈',
-        }),
-        new HtmlWebpackPlugin({
             template: __dirname + '/public/im.html',
             filename: 'im.html',
             chunks: ['im'],
             inject: true,
-            title: '实时聊天',
+            title: '意见反馈',
         }),
         new webpack.HotModuleReplacementPlugin(),
     ],

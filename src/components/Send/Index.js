@@ -4,8 +4,8 @@ import Contact from '../../containers/Send/Contact';
 import Statement from '../../containers/Send/Statement';
 import Send from '../../containers/Send/Send';
 
-const Index = () => (
-    <div className="edit">
+const Index = ({ display }) => (
+    <div className="edit" style={{ display: display }}>
         <Description />
         <Contact />
         <Statement />

@@ -2,11 +2,7 @@ import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import md5 from 'md5';
 import ChatList from './ChatList';
-import Send from './Send';
-
-const sendMsgBtn = document.getElementById('sendMsg');
-const joinUpBtn = document.getElementById('joinUp');
-const msgReadBtn = document.getElementById('msgRead');
+import Send from '../../containers/IM/Send';
 
 console.log( md5( `xqqqqqqqqqqqqqq${new Date().getTime()}!1@2#3$4` ) );
 
@@ -76,13 +72,23 @@ const userList = {
     seq:"customer_join"
 };
 
-const IM = () => (
-    <div className="im">
-        <ChatList />
-        <Send />
-        <div className="loading-icon transparent" id="loading"></div>
-        <div className="display-layer" id="displayLayer" style={{ display: 'none' }}><img className="wide reset" src="" /></div>
-    </div>
-);
+class IM extends Component {
+    componentDidMount() {
+        this.props.connectWebsocket();
+    }
+
+    render() {
+        const { display } = this.props;
+
+        return (
+            <div className="im" style={{ display: display }}>
+                <ChatList />
+                <Send />
+                <div className="loading-icon transparent" id="loading"></div>
+                <div className="display-layer" id="displayLayer" style={{ display: 'none' }}><img className="wide reset" src="" /></div>
+            </div>
+        );
+    }
+}
 
 export default IM;

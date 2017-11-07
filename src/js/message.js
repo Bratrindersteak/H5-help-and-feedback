@@ -171,7 +171,7 @@ dolphin.Operation = {
 	    // disconnect
 	    OP_DISCONNECT       : 5,
 	    OP_DISCONNECT_REPLY : 6,
-	    // send text message
+	    // im text message
 	    OP_SEND_SMS         : 20,
 	    OP_SEND_SMS_REPLY   : 21
 

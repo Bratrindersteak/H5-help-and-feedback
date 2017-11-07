@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 
-const Send = () => (
+const Send = ({onClick}) => (
     <div className="bottom-module unfinished" id="bottomModule">
-        <div className="send-box up" id="sendBox">
-            <button type="button" className="shift to-menu"></button>
-            <input className="input" id="contentInput" type="text" maxLength="300" />
-            <label className="send" htmlFor="uploadPic"></label>
-            <input className="send" id="uploadPic" type="file" multiple="multiple" accept="image/*" />
-        </div>
-        <div className="menu down" id="menuBox">
-            <button type="button" className="shift to-send"></button>
-            <button type="button" className="trash-all" id="trashAll"></button>
+        <div className="send-box" onClick={ onClick }>
+            <button type="button" className="icon chat"></button>
+            <input className="input" id="contentInput" type="text" readOnly={ true }/>
         </div>
     </div>
 );
