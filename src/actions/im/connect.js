@@ -37,12 +37,15 @@ const connectWebsocketFilture = () => {
 };
 
 const connectWebsocket = () => {
+
+    alert( window.SohuAppPrivates );
+
     const data = {
         cmd: 1,
         seq: 'token',
         body: {
             version: '4.7.0',
-            uid: "pengwu213220",
+            uid: "pengwu",
             userStatus: 0,
             name: "吴鹏",
             isMember: -1,
@@ -70,7 +73,7 @@ const connectWebsocket = () => {
     };
 
     return (dispatch, getState) => {
-        ws = new WebSocket(WEB_SOCKET_URL);
+        ws = new WebSocket(DEV_WEB_SOCKET_URL);
 
         ws.onopen = () => {
             dispatch(connectWebsocketRequest());
@@ -80,7 +83,7 @@ const connectWebsocket = () => {
         ws.onmessage = (message) => {
             const data = JSON.parse(message.data);
 
-            if (data.body.result === 0) {
+            if (data.cmd === 4 && data.body.result === 0) {
                 dispatch(connectWebsocketSuccess());
                 dispatch(messageUpdate());
                 dispatch(fetchChatListToken());

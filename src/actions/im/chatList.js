@@ -35,12 +35,10 @@ const fetchChatList = (token, feedbackId = 1, page = 1, size = 10) => {
     return (dispatch) => {
         dispatch(fetchChatListRequest());
 
-        fetch(`${ DEV_DOMAIN }open/message/chatlog/list?feedbackId=${ feedbackId }&page=${ page }&size=${ size }`, {
+        fetch(`${ TEST_DOMAIN }open/message/chatlog/list?feedbackId=${ feedbackId }&page=${ page }&size=${ size }`, {
             method: 'GET',
             credentials: 'include',
-            mode: 'cors',
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
                 'Authorization': token
             }
         }).then((response) =>

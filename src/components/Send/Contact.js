@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Contact = ({ text, writeContact }) => {
-    let input;
+let input;
 
+const Contact = ({ text, writeContact }) => {
     return (
         <div className="text-block">
             <input type="text" maxLength={ text.maxLength } placeholder={ text.placeholder } ref={ (node) => { input = node } } onChange={ () => writeContact(input) } />
@@ -10,4 +10,4 @@ const Contact = ({ text, writeContact }) => {
     )
 };
 
-export default Contact;
+export { input, Contact };

@@ -36,7 +36,7 @@ const fetchChatListToken = () => {
     return (dispatch) => {
         dispatch(fetchChatListTokenRequest());
 
-        fetch(`${ DEV_DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
+        fetch(`${ TEST_DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
             method: 'GET',
         }).then((response) =>
             response.json()

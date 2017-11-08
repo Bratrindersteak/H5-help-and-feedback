@@ -39,7 +39,7 @@ const messageUpdate = () => {
         body: {
             msgId: 0,
             feedbackId: 3444444444444,
-            uid: 'pengwu213220',
+            uid: 'pengwu',
         },
     };
 

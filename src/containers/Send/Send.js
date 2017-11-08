@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { sendFeedback } from '../../actions/send/index';
+import { sendFeedback } from '../../actions/send/send';
 import { default as SendUI } from '../../components/Send/Send';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,8 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        sendFeedback: () => {
-            dispatch(sendFeedback());
+        sendFeedback: (textarea, input) => {
+            dispatch(sendFeedback(textarea, input));
         },
     }
 };
