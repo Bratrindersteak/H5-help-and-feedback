@@ -43,7 +43,7 @@ const fetchChatListToken = (feedbackId) => {
         ).then((json) => {
             console.log( json );
             dispatch(fetchChatListTokenSuccess(json.data));
-            dispatch(fetchChatList(json.data, feedbackId, 1, 10));
+            dispatch(fetchChatList(json.data, feedbackId));
         }).catch((error) => {
             dispatch(fetchChatListTokenFailure(error));
         });

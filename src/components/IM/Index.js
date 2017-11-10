@@ -75,7 +75,7 @@ const userList = {
 class IM extends Component {
     componentWillMount() {
         let count = 0;
-        let userInfo = {};
+        let userInfo;
         let timer = setInterval(() => {
 
             if (window.SohuAppPrivates) {

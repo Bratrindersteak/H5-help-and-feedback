@@ -3,7 +3,7 @@ import { FETCH_CHAT_LIST, FETCH_CHAT_LIST_REQUEST, FETCH_CHAT_LIST_SUCCESS, FETC
 const list = (state = [], action) => {
     switch (action.type) {
         case FETCH_CHAT_LIST_SUCCESS:
-            return action.payload.data.map((item) => {
+            let list = action.payload.data.map((item) => {
 
                 if (item.userStatus === 0 && item.profilePhoto === null) {
                     return Object.assign({}, item, {
@@ -13,6 +13,11 @@ const list = (state = [], action) => {
 
                 return item;
             });
+
+            return [
+                ...list,
+                ...state,
+            ];
         default:
             return state;
     }

@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 
 class ChatList extends Component {
-
-    componentDidMount() {
-        // document.body.clientHeight
-        window.addEventListener('scroll', () => console.log(window.scrollY));
-    }
-
     componentDidUpdate() {
         window.scrollTo(0, document.body.clientHeight - window.outerHeight);
     }
 
     render() {
-        const { list } = this.props;
+        const { list, fetchChatListToken } = this.props;
 
         return (
-            <ul className="message-list iscroll">
+            <ul className="message-list iscroll" onTouchEnd={ () => {
+
+                if (window.scrollY === 0) {
+                    return fetchChatListToken();
+                }
+            } }>
                 {
                     list.map((item, index) => {
 
