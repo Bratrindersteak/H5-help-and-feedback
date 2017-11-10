@@ -1,15 +1,18 @@
 import React from 'react';
 import Description from '../../containers/Send/Description';
 import Contact from '../../containers/Send/Contact';
-import Statement from '../../containers/Send/Statement';
 import Send from '../../containers/Send/Send';
 
-const Index = ({ display }) => (
-    <div className="edit" style={{ display: display }}>
-        <Description />
-        <Contact />
-        <Statement />
-        <Send />
+let send;
+
+const Index = ({ display, onTouchStart }) => (
+    <div className="send" style={{ display: display }} ref={ (node) => { send = node } }>
+        <div className="alpha" onTouchStart={ () => onTouchStart() }></div>
+        <div className="edit">
+            <Description send={ send } />
+            <Contact />
+            <Send />
+        </div>
     </div>
 );
 

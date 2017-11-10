@@ -1,9 +1,12 @@
 import React from 'react';
-import { textarea } from './Description';
+import { textarea, img } from './Description';
 import { input } from './Contact';
 
 const Send = ({ text, sendFeedback }) => (
-    <div className="edit-btn"><button type="button" onClick={ () => sendFeedback(textarea, input) }>{ text.text }</button></div>
+    <div className="edit-send">
+        <p className="statement">{ text.statement }</p>
+        <button className="btn" type="button" onClick={ () => sendFeedback(textarea, img, input) }>{ text.btn.text }</button>
+    </div>
 );
 
 export default Send;

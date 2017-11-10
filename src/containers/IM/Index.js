@@ -9,8 +9,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        connectWebsocket: () => {
-            dispatch(connectWebsocket());
+        connectWebsocket: (userInfo) => {
+            dispatch(connectWebsocket(userInfo));
         },
     }
 };

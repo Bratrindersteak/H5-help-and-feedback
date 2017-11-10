@@ -32,14 +32,13 @@ const messageUpdateFilture = () => {
     }
 };
 
-const messageUpdate = () => {
+const messageUpdate = (feedbackId, uid) => {
     const data = {
         cmd: 9,
         seq: 'MSG_IM_STATUS',
         body: {
-            msgId: 0,
-            feedbackId: 3444444444444,
-            uid: 'pengwu',
+            feedbackId: feedbackId,
+            uid: uid,
         },
     };
 

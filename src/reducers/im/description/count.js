@@ -1,4 +1,4 @@
-import { WRITE_DESCRIPTION, UPLOAD_PIC, WRITE_CONTACT, SEND_FEEDBACK, } from '../../../actions/send/send';
+import { WRITE_DESCRIPTION } from '../../../actions/send/description';
 import SEND from '../../../jsons/send.json';
 
 const count = (state = SEND.description.count, action) => {

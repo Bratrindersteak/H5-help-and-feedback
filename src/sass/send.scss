@@ -2,9 +2,66 @@
 @import 'initialization';
 @import 'container';
 
+.send {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    @extend %fixed;
+}
+
+.edit {
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    margin-top: 0.1rem;
+    z-index: 11;
+    @extend %absolute;
+    @extend %bkgfff;
+}
+
+.preview {
+    .delete-icon {
+        top: 0.1rem;
+        right: 0.08rem;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 0.2rem;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+        @extend %absolute;
+        @extend %before;
+        @extend %after;
+
+        &:before {
+            top: 50%;
+            left: 50%;
+            width: 0.23rem;
+            height: 0.03rem;
+            margin-top: -0.015rem;
+            margin-left: -0.115rem;
+            transform: rotate(45deg);
+            @extend %bkgfff;
+        }
+
+        &:after {
+            top: 50%;
+            left: 50%;
+            width: 0.23rem;
+            height: 0.03rem;
+            margin-top: -0.015rem;
+            margin-left: -0.115rem;
+            transform: rotate(-45deg);
+            @extend %bkgfff;
+        }
+    }
+}
+
 .text-block {
-    margin: 0.3rem 0.2rem 0;
+    margin: 0.2rem 0.2rem 0;
     padding: 0 0.2rem;
+    border-radius: 0.1rem;
     @extend %relative;
     @extend %bkgf5f5f5;
     @extend %font-zero;
@@ -32,8 +89,8 @@
     }
     
     input[type=file], .upload-pic {
-        top: 0.3rem;
-        right: 0.3rem;
+        top: 0.2rem;
+        right: 0.2rem;
         width: 1.3rem;
         @extend %absolute;
     }
@@ -84,28 +141,29 @@
     padding-bottom: 0.22rem;
 }
 
-.statement {
-    height: 0.88rem;
-    line-height: 0.44rem;
-    margin: 0.22rem 0.2rem 0;
-    font-size: 0.3rem;
-    @extend %color999;
-}
+.edit-send {
+    margin: 0.14rem 0.2rem;
+    @extend %flex-box;
 
-.edit-btn {
-    height: 0.84rem;
-    line-height: 0.84rem;
-    margin-top: 0.92rem;
-    @extend %text-align;
-    @extend %font-zero;
-    
-    button {
-        width: 4.11rem;
-        height: 100%;
-        font-size: 0.32rem;
-        border-radius: 0.42rem;
+    .statement {
+        width: 80.849%;
+        height: 0.72rem;
+        line-height: 0.36rem;
+        font-size: 0.22rem;
+        @extend %flex-elements-auto;
+        @extend %color999;
+    }
+
+    .btn {
+        width: 19.151%;
+        height: 0.6rem;
+        line-height: 0.6rem;
+        font-size: 0.3rem;
+        border-radius: 0.3rem;
         background-image: linear-gradient(left, #ff7747, #f71e4c);
+        @extend %flex-elements-auto;
+        @extend %text-align;
         @extend %colorfff;
-        @include boxShadow(1px 3px 2px #fac0c5);
+        @extend %font-zero;
     }
 }

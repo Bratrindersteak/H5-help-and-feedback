@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import fetch from 'isomorphic-fetch';
 import md5 from 'md5';
-import ChatList from './ChatList';
+import ChatList from '../../containers/IM/ChatList';
 import Send from '../../containers/IM/Send';
 
 console.log( md5( `xqqqqqqqqqqqqqq${new Date().getTime()}!1@2#3$4` ) );
@@ -73,8 +73,52 @@ const userList = {
 };
 
 class IM extends Component {
-    componentDidMount() {
-        this.props.connectWebsocket();
+    componentWillMount() {
+        let count = 0;
+        let userInfo = {};
+        let timer = setInterval(() => {
+
+            if (window.SohuAppPrivates) {
+                userInfo = JSON.parse(window.SohuAppPrivates);
+
+                this.props.connectWebsocket(userInfo);
+                clearInterval(timer);
+
+                return;
+            }
+
+            if (count === 60) {
+                userInfo = {
+                    passport: 'ppag201793c375ff@sohu.com',
+                    token: 'eyJleHAiOjE1MTM3NTQ4NDEyNzcsImlhdCI6MTUwNTk3ODg0MTI3NywicHAiOiJwcGFnMjAxNzkzYzM3NWZmQHNvaHUuY29tIiwidGsiOiJ6ME44VVZQczl0M0J0OFFuTm5ZNENOZmhLckN1ZUtCMSIsInYiOjB9.Kxg7PjBef9x21lKINm_6s5IYXHg1IM41_B4sSgGXnYA',
+                    uid: '6FBF1C2E-1B6B-45EB-81A2-F70D82FA6EC6',
+                    gid: 'x010740101010ca114dff5855000ceb4252e76abd6f7',
+                    plat: 3,
+                    sver: '6.8.6',
+                    app_id: 1,
+                    appid: 107401,
+                    appvs: '6.8',
+                    ua: 'AppleCoreMedia/1.0.0.12B440 (iPhone, U, CPU OS 8_1_2 like Mac OS X, zh_cn)',
+                    passport_id: '210668446',
+                    mobile: '15810001666',
+                    nickname: 'Baymax小白',
+                    poid: 1,
+                    webtype: 'wifi',
+                    userImg: 'http://css.tv.itc.cn/channel/space/avatar/05_small.jpg',
+                    sysver: '10.3.2',
+                    partner: 6932,
+                    systime: 1505983869.795317,
+                    wxinstall: 1,
+                };
+
+                this.props.connectWebsocket(userInfo);
+                clearInterval(timer);
+
+                return;
+            }
+
+            count += 1;
+        }, 50);
     }
 
     render() {

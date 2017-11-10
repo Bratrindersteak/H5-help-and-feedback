@@ -36,44 +36,31 @@ const connectWebsocketFilture = () => {
     }
 };
 
-const connectWebsocket = () => {
-
-    alert( window.SohuAppPrivates );
-
+const connectWebsocket = (userInfo) => {
     const data = {
         cmd: 1,
         seq: 'token',
         body: {
             version: '4.7.0',
-            uid: "pengwu",
+            uid: userInfo.uid,
             userStatus: 0,
-            name: "吴鹏",
-            isMember: -1,
-            sex: 0,
-            username: '顺口溜常客',
-            profilePhoto: "http:10.1.2.3",
-            account: "hhddasas@dsd",
-            passport: "dssddad@ds",
-            contactInfo1: "dhsjsd@qq.com",
-            contactInfo2: "121234444",
-            browser: "Google Chrome",
-            browserVersion: "9.0.1",
-            appVersion: "3.3.3",
-            system: "win7",
-            channelId: 342343429443,
-            ip: "11.22.22.22",
-            isp: 1,
-            location: "陕西",
-            url: "http:10.2.3.4",
-            pn: "ewrrwrrew",
-            poid: 1,
-            plat: 1,
-            source: 1
+            gender: -1,
+            username: userInfo.nickname,
+            profilePhoto: userInfo.userImg,
+            passport: userInfo.passport,
+            contactInfo1: userInfo.mobile,
+            contactInfo2: '',
+            appVersion: userInfo.sver,
+            system: userInfo.sysver,
+            // channelId: 342343429443,  will add in app
+            pn: userInfo.ua,
+            poid: userInfo.poid,
+            plat: userInfo.plat,
         }
     };
 
     return (dispatch, getState) => {
-        ws = new WebSocket(DEV_WEB_SOCKET_URL);
+        ws = new WebSocket(WEB_SOCKET_URL);
 
         ws.onopen = () => {
             dispatch(connectWebsocketRequest());
@@ -85,8 +72,8 @@ const connectWebsocket = () => {
 
             if (data.cmd === 4 && data.body.result === 0) {
                 dispatch(connectWebsocketSuccess());
-                dispatch(messageUpdate());
-                dispatch(fetchChatListToken());
+                dispatch(messageUpdate(data.body.feedbackId, userInfo.uid));
+                dispatch(fetchChatListToken(data.body.feedbackId));
             } else {
                 dispatch(connectWebsocketFilture(data.body.reason));
             }

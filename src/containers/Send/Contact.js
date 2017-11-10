@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { writeContact } from '../../actions/send/send';
+import { writeContact } from '../../actions/send/contact';
 import { Contact as ContactUI } from '../../components/Send/Contact';
 
 const mapStateToProps = (state, ownProps) => ({

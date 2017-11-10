@@ -32,7 +32,7 @@ const fetchChatListTokenFailure = (error) => {
     }
 };
 
-const fetchChatListToken = () => {
+const fetchChatListToken = (feedbackId) => {
     return (dispatch) => {
         dispatch(fetchChatListTokenRequest());
 
@@ -43,7 +43,7 @@ const fetchChatListToken = () => {
         ).then((json) => {
             console.log( json );
             dispatch(fetchChatListTokenSuccess(json.data));
-            dispatch(fetchChatList(json.data, 1, 1, 10));
+            dispatch(fetchChatList(json.data, feedbackId, 1, 10));
         }).catch((error) => {
             dispatch(fetchChatListTokenFailure(error));
         });

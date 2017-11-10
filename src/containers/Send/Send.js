@@ -8,8 +8,8 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        sendFeedback: (textarea, input) => {
-            dispatch(sendFeedback(textarea, input));
+        sendFeedback: (textarea, img, input) => {
+            dispatch(sendFeedback(textarea, img, input));
         },
     }
 };
