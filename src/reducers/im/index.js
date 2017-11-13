@@ -5,6 +5,7 @@ import contact from './contact';
 import send from './send';
 import list from './list';
 import userInfo from './userInfo';
+import week from './week';
 
 const app = combineReducers({
     display,
@@ -13,6 +14,7 @@ const app = combineReducers({
     send,
     list,
     userInfo,
+    week,
 });
 
 export default app;

@@ -1,22 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
+import TimeBar from './TimeBar';
 
-const Text = ({item, userInfo}) => (
+const Text = ({item, userInfo, week}) => (
     <li className="message-box">
-        <div className="time-info">
-            {
-                `${
-                    new Date(item.createTime).getFullYear()
-                    }-${
-                    new Date(item.createTime).getMonth() + 1 >= 10 ? new Date(item.createTime).getMonth() + 1 : '0' + ( new Date(item.createTime).getMonth() + 1 )
-                    }-${
-                    new Date(item.createTime).getDate() >= 10 ? new Date(item.createTime).getDate() : '0' + ( new Date(item.createTime).getDate() )
-                    } ${
-                    new Date(item.createTime).getHours() >= 10 ? new Date(item.createTime).getHours() : '0' + ( new Date(item.createTime).getHours() )
-                    }:${
-                    new Date(item.createTime).getMinutes() >= 10 ? new Date(item.createTime).getMinutes() : '0' + ( new Date(item.createTime).getMinutes() )
-                    }`
-            }
-        </div>
+        <TimeBar createTime={ item.createTime } week={ week } />
         <div className={`main-info ${ item.userStatus ? '' : 'mein' } text clear`}>
             <div className="portrait">
                 {
@@ -30,23 +17,9 @@ const Text = ({item, userInfo}) => (
     </li>
 );
 
-const Picture = ({item, userInfo, picLoading}) => (
+const Picture = ({item, userInfo, week, picLoading}) => (
     <li className="message-box">
-        <div className="time-info">
-            {
-                `${
-                    new Date(item.createTime).getFullYear()
-                    }-${
-                    new Date(item.createTime).getMonth() + 1 >= 10 ? new Date(item.createTime).getMonth() + 1 : '0' + ( new Date(item.createTime).getMonth() + 1 )
-                    }-${
-                    new Date(item.createTime).getDate() >= 10 ? new Date(item.createTime).getDate() : '0' + ( new Date(item.createTime).getDate() )
-                    } ${
-                    new Date(item.createTime).getHours() >= 10 ? new Date(item.createTime).getHours() : '0' + ( new Date(item.createTime).getHours() )
-                    }:${
-                    new Date(item.createTime).getMinutes() >= 10 ? new Date(item.createTime).getMinutes() : '0' + ( new Date(item.createTime).getMinutes() )
-                    }`
-            }
-        </div>
+        <TimeBar createTime={ item.createTime } week={ week } />
         <div className={`main-info ${ item.userStatus ? '' : 'mein' } picture clear`}>
             <div className="portrait">
                 {

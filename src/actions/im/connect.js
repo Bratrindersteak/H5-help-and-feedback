@@ -1,6 +1,8 @@
 import { WEB_SOCKET_URL, DEV_WEB_SOCKET_URL } from '../../../config';
-import { messageUpdate } from './msgUpdate';
 import { fetchChatListToken } from './getToken';
+import { addChatItem } from './chatItem';
+import { rewritingDescription } from '../send/description';
+import { foldSendBox } from "../send/coverLayer";
 
 const CONNECT_WEBSOCKET = 'CONNECT_WEBSOCKET';
 const CONNECT_WEBSOCKET_REQUEST = 'CONNECT_WEBSOCKET_REQUEST';
@@ -73,12 +75,25 @@ const connectWebsocket = (userInfo) => {
         ws.onmessage = (message) => {
             const data = JSON.parse(message.data);
 
-            if (data.cmd === 4 && data.body.result === 0) {
-                dispatch(connectWebsocketSuccess());
-                // dispatch(messageUpdate(data.body.feedbackId, userInfo.uid));
-                dispatch(fetchChatListToken(data.body.feedbackId));
-            } else {
-                dispatch(connectWebsocketFilture(data.body.reason));
+            if (data.cmd === 4) {
+
+                if (data.body.result === 0) {
+                    dispatch(connectWebsocketSuccess());
+                    dispatch(fetchChatListToken(data.body.feedbackId));
+                } else {
+                    dispatch(connectWebsocketFilture(data.body.reason));
+                }
+            }
+
+            if (data.cmd === 5) {
+                dispatch(sendFeedbackSuccess(data));
+                dispatch(addChatItem(data.body));
+                dispatch(rewritingDescription());
+                dispatch(foldSendBox());
+            }
+
+            if (data.cmd === 10) {
+                dispatch(addChatItem(data.body));
             }
         };
 
@@ -88,11 +103,11 @@ const connectWebsocket = (userInfo) => {
     }
 };
 
-const displaySendBox = () => {
+const displaySendBox = (ws) => {
     return {
         type: DISPLAY_SEND_BOX,
         payload: {
-
+            ws: ws.readyState,
         },
     }
 };

@@ -1,8 +1,6 @@
 import { ws } from '../im/connect';
-import { addChatItem } from '../im/chatItem';
-import { descriptionValueInvalid, rewritingDescription } from './description';
-import { contactValueInvalid, rewritingContact } from './contact';
-import { foldSendBox } from "./coverLayer";
+import { descriptionValueInvalid } from './description';
+import { contactValueInvalid } from './contact';
 
 const SEND_FEEDBACK = 'SEND_FEEDBACK';
 const SEND_FEEDBACK_REQUEST = 'SEND_FEEDBACK_REQUEST';
@@ -82,6 +80,7 @@ const sendFeedback = (textarea, img, input) => {
                     msgId: 0,
                     msgType: 2,
                     content: img.src,
+                    savable: true,
                 }
             };
 
@@ -89,20 +88,6 @@ const sendFeedback = (textarea, img, input) => {
 
             ws.send(JSON.stringify(messageDataPic));
         }
-
-        ws.onmessage = (message) => {
-            const data = JSON.parse(message.data);
-
-            if (data.cmd === 5) {
-                dispatch(sendFeedbackSuccess(data));
-                dispatch(rewritingDescription());
-                dispatch(foldSendBox());
-            }
-
-            if (data.cmd === 10) {
-                dispatch(addChatItem());
-            }
-        };
     }
 };
 

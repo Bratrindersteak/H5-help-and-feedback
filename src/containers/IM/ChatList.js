@@ -6,6 +6,7 @@ import { picLoading } from '../../actions/im/chatItem';
 const mapStateToProps = (state, ownProps) => ({
     list: state.list,
     userInfo: state.userInfo,
+    week: state.week,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
