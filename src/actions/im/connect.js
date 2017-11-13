@@ -56,11 +56,14 @@ const connectWebsocket = (userInfo) => {
             pn: userInfo.ua,
             poid: userInfo.poid,
             plat: userInfo.plat,
+            gid: userInfo.gid,
+            appid: userInfo.appid,
+            ua: userInfo.ua,
         }
     };
 
     return (dispatch, getState) => {
-        ws = new WebSocket(DEV_WEB_SOCKET_URL);
+        ws = new WebSocket(WEB_SOCKET_URL);
 
         ws.onopen = () => {
             dispatch(connectWebsocketRequest());
@@ -72,7 +75,7 @@ const connectWebsocket = (userInfo) => {
 
             if (data.cmd === 4 && data.body.result === 0) {
                 dispatch(connectWebsocketSuccess());
-                dispatch(messageUpdate(data.body.feedbackId, userInfo.uid));
+                // dispatch(messageUpdate(data.body.feedbackId, userInfo.uid));
                 dispatch(fetchChatListToken(data.body.feedbackId));
             } else {
                 dispatch(connectWebsocketFilture(data.body.reason));

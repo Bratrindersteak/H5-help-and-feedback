@@ -1,8 +1,8 @@
-const HIDE_COVER_LAYER = 'HIDE_COVER_LAYER';
+const FOLD_SEND_BOX = 'FOLD_SEND_BOX';
 
-const hideCoverLayer = () => {
+const foldSendBox = () => {
     return {
-        type: HIDE_COVER_LAYER,
+        type: FOLD_SEND_BOX,
         payload: {
 
         },
@@ -10,6 +10,6 @@ const hideCoverLayer = () => {
 };
 
 export {
-    HIDE_COVER_LAYER,
-    hideCoverLayer,
+    FOLD_SEND_BOX,
+    foldSendBox,
 };

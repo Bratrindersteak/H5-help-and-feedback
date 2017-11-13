@@ -4,6 +4,7 @@ import description from './description/index';
 import contact from './contact';
 import send from './send';
 import list from './list';
+import userInfo from './userInfo';
 
 const app = combineReducers({
     display,
@@ -11,6 +12,7 @@ const app = combineReducers({
     contact,
     send,
     list,
+    userInfo,
 });
 
 export default app;

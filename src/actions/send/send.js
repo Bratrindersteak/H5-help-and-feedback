@@ -1,5 +1,8 @@
 import { ws } from '../im/connect';
 import { addChatItem } from '../im/chatItem';
+import { descriptionValueInvalid, rewritingDescription } from './description';
+import { contactValueInvalid, rewritingContact } from './contact';
+import { foldSendBox } from "./coverLayer";
 
 const SEND_FEEDBACK = 'SEND_FEEDBACK';
 const SEND_FEEDBACK_REQUEST = 'SEND_FEEDBACK_REQUEST';
@@ -35,15 +38,15 @@ const sendFeedbackFailure = () => {
 
 const sendFeedback = (textarea, img, input) => {
 
-    if (!textarea.value) {
+    if (!textarea.value || textarea.style.color) {
         return (dispatch) => {
-            dispatch(sendFeedbackFailure());
+            dispatch(descriptionValueInvalid());
         }
     }
 
-    if (!input.value) {
+    if (!input.value || input.style.color) {
         return (dispatch) => {
-            dispatch(sendFeedbackFailure());
+            dispatch(contactValueInvalid());
         }
     }
 
@@ -58,6 +61,7 @@ const sendFeedback = (textarea, img, input) => {
             msgId: 0,
             msgType: 1,
             content: textarea.value,
+            contactInfo2: input.value,
         }
     };
 
@@ -89,13 +93,13 @@ const sendFeedback = (textarea, img, input) => {
         ws.onmessage = (message) => {
             const data = JSON.parse(message.data);
 
-            if (data.cmd === 10) {
+            if (data.cmd === 5) {
                 dispatch(sendFeedbackSuccess(data));
-            } else {
-                dispatch(sendFeedbackFailure());
+                dispatch(rewritingDescription());
+                dispatch(foldSendBox());
             }
 
-            if (data.cmd === 5) {
+            if (data.cmd === 10) {
                 dispatch(addChatItem());
             }
         };

@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { writeContact } from '../../actions/send/contact';
+import { writingContact, rewritingContact } from '../../actions/send/contact';
 import { Contact as ContactUI } from '../../components/Send/Contact';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -8,8 +8,11 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        writeContact: (input) => {
-            dispatch(writeContact(input));
+        writingContact: (input) => {
+            dispatch(writingContact(input));
+        },
+        rewritingContact: () => {
+            dispatch(rewritingContact());
         },
     }
 };

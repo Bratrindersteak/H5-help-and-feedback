@@ -2,10 +2,15 @@ import React from 'react';
 
 let img, files, textarea;
 
-const Description = ({ text, sendBox, writeDescription, uploadPic, deletePic }) => {
+const Description = ({ text, sendBox, writingDescription, rewritingDescription, uploadPic, deletePic }) => {
     return (
         <div className="text-block textarea">
-            <textarea value={ text.textarea.value } maxLength={ text.count.total } placeholder={ text.textarea.placeholder } ref={ (node) => { textarea = node } } onChange={ () => writeDescription(textarea) } onFocus={ () => {
+            <textarea value={ text.textarea.value } maxLength={ text.count.total } placeholder={ text.textarea.placeholder } style={{ color: text.textarea.color }} ref={ (node) => { textarea = node } } onChange={ () => writingDescription(textarea) } onFocus={ (event) => {
+
+                if (event.target.style.color) {
+                    rewritingDescription();
+                }
+
                 setTimeout(() => {
                     sendBox.scrollIntoViewIfNeeded(true)
                 }, 1000)

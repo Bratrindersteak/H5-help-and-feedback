@@ -1,5 +1,5 @@
 import { DISPLAY_SEND_BOX } from "../../actions/im/connect";
-import { HIDE_COVER_LAYER } from '../../actions/send/coverLayer';
+import { FOLD_SEND_BOX } from '../../actions/send/coverLayer';
 
 const display = (state = {
     im: 'block',
@@ -10,7 +10,7 @@ const display = (state = {
             return Object.assign({}, state, {
                 send: 'block',
             });
-        case HIDE_COVER_LAYER:
+        case FOLD_SEND_BOX:
             return Object.assign({}, state, {
                 send: 'none',
             });

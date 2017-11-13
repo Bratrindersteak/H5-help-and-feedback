@@ -5,6 +5,7 @@ import { messageUpdate } from '../../actions/im/msgUpdate';
 
 const mapStateToProps = (state, ownProps) => ({
     display: state.display.im,
+    userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {

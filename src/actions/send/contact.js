@@ -1,15 +1,35 @@
-const WRITE_CONTACT = 'WRITE_CONTACT';
+const WRITING_CONTACT = 'WRITING_CONTACT';
+const CONTACT_VALUE_INVALID = 'CONTACT_VALUE_INVALID';
+const REWRITING_CONTACT = 'REWRITING_CONTACT';
 
-const writeContact = (input) => {
+const writingContact = (input) => {
     return {
-        type: WRITE_CONTACT,
+        type: WRITING_CONTACT,
         payload: {
             value: input.value,
         },
     }
 };
 
+const contactValueInvalid = () => {
+    return {
+        type: CONTACT_VALUE_INVALID,
+        payload: {
+
+        },
+    }
+};
+
+const rewritingContact = () => {
+    return {
+        type: REWRITING_CONTACT,
+        payload: {
+
+        },
+    }
+};
+
 export {
-    WRITE_CONTACT,
-    writeContact,
+    WRITING_CONTACT, CONTACT_VALUE_INVALID, REWRITING_CONTACT,
+    writingContact, contactValueInvalid, rewritingContact,
 };

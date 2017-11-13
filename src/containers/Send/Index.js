@@ -1,6 +1,8 @@
 import { connect } from 'react-redux';
 import { default as SendUI } from '../../components/Send/Index';
-import { hideCoverLayer } from '../../actions/send/coverLayer';
+import { rewritingDescription } from "../../actions/send/description";
+import { rewritingContact } from "../../actions/send/contact";
+import { foldSendBox } from '../../actions/send/coverLayer';
 
 const mapStateToProps = (state, ownProps) => ({
     display: state.display.send,
@@ -9,7 +11,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         onTouchStart: () => {
-            dispatch(hideCoverLayer());
+            dispatch(foldSendBox());
         },
     }
 };
