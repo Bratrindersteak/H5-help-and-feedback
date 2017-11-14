@@ -3,6 +3,8 @@ import { fetchChatListToken } from './getToken';
 import { addChatItem } from './chatItem';
 import { rewritingDescription } from '../send/description';
 import { foldSendBox } from "../send/coverLayer";
+import { sendFeedbackSuccess } from "../send/send";
+import { emptyPic } from "../send/uploadPic";
 
 const CONNECT_WEBSOCKET = 'CONNECT_WEBSOCKET';
 const CONNECT_WEBSOCKET_REQUEST = 'CONNECT_WEBSOCKET_REQUEST';
@@ -61,11 +63,12 @@ const connectWebsocket = (userInfo) => {
             gid: userInfo.gid,
             appid: userInfo.appid,
             ua: userInfo.ua,
+            token: userInfo.token,
         }
     };
 
     return (dispatch, getState) => {
-        ws = new WebSocket(WEB_SOCKET_URL);
+        ws = new WebSocket(DEV_WEB_SOCKET_URL);
 
         ws.onopen = () => {
             dispatch(connectWebsocketRequest());
@@ -89,6 +92,7 @@ const connectWebsocket = (userInfo) => {
                 dispatch(sendFeedbackSuccess(data));
                 dispatch(addChatItem(data.body));
                 dispatch(rewritingDescription());
+                dispatch(emptyPic());
                 dispatch(foldSendBox());
             }
 
@@ -103,11 +107,11 @@ const connectWebsocket = (userInfo) => {
     }
 };
 
-const displaySendBox = (ws) => {
+const displaySendBox = () => {
     return {
         type: DISPLAY_SEND_BOX,
         payload: {
-            ws: ws.readyState,
+
         },
     }
 };

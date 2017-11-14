@@ -34,7 +34,7 @@ const sendFeedbackFailure = () => {
     }
 };
 
-const sendFeedback = (textarea, img, input) => {
+const sendFeedback = (senderUid, textarea, img, input) => {
 
     if (!textarea.value || textarea.style.color) {
         return (dispatch) => {
@@ -52,7 +52,7 @@ const sendFeedback = (textarea, img, input) => {
         cmd: 10,
         seq: 'msgImCustomer',
         body: {
-            senderUid: '6FBF1C2E-1B6B-45EB-81A2-F70D82FA6EC6',
+            senderUid: senderUid,
             receiverUid: '',
             userStatus: 0,
             isRead: 0,
@@ -64,16 +64,16 @@ const sendFeedback = (textarea, img, input) => {
     };
 
     return (dispatch) => {
-        dispatch(sendFeedbackRequest ());
+        dispatch(sendFeedbackRequest());
 
         ws.send(JSON.stringify(messageDataText));
 
-        if (img) {
+        if (img && img.src) {
             let messageDataPic = {
                 cmd: 10,
                 seq: 'msgImCustomer',
                 body: {
-                    senderUid: '6FBF1C2E-1B6B-45EB-81A2-F70D82FA6EC6',
+                    senderUid: senderUid,
                     receiverUid: '',
                     userStatus: 0,
                     isRead: 0,
@@ -84,7 +84,7 @@ const sendFeedback = (textarea, img, input) => {
                 }
             };
 
-            dispatch(sendFeedbackRequest ());
+            dispatch(sendFeedbackRequest());
 
             ws.send(JSON.stringify(messageDataPic));
         }

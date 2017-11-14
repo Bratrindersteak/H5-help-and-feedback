@@ -4,12 +4,13 @@ import { default as SendUI } from '../../components/Send/Send';
 
 const mapStateToProps = (state, ownProps) => ({
     text: state.send,
+    userInfo: state.userInfo,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        sendFeedback: (textarea, img, input) => {
-            dispatch(sendFeedback(textarea, img, input));
+        sendFeedback: (uid, textarea, img, input) => {
+            dispatch(sendFeedback(uid, textarea, img, input));
         },
     }
 };

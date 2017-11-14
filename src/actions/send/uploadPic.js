@@ -6,6 +6,7 @@ const UPLOAD_PIC = 'UPLOAD_PIC';
 const UPLOAD_PIC_REQUEST = 'UPLOAD_PIC_REQUEST';
 const UPLOAD_PIC_SUCCESS = 'UPLOAD_PIC_SUCCESS';
 const UPLOAD_PIC_FAILURE = 'UPLOAD_PIC_FAILURE';
+const EMPTY_PIC = 'EMPTY_PIC';
 
 const uploadPicRequest = () => {
     return {
@@ -70,7 +71,18 @@ const uploadPic = (files) => {
     }
 };
 
+const emptyPic = () => {
+    return {
+        type: EMPTY_PIC,
+        payload: {
+
+        },
+    }
+};
+
 export {
     UPLOAD_PIC, UPLOAD_PIC_REQUEST, UPLOAD_PIC_SUCCESS, UPLOAD_PIC_FAILURE,
+    EMPTY_PIC,
     uploadPic, uploadPicRequest, uploadPicSuccess, uploadPicFailure,
+    emptyPic,
 };

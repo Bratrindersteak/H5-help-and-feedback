@@ -1,15 +1,12 @@
 import React from 'react';
 import TimeBar from './TimeBar';
+import Portrait from './Portrait';
 
-const Text = ({item, userInfo, week}) => (
+const Text = ({ item, userInfo, week }) => (
     <li className="message-box">
         <TimeBar createTime={ item.createTime } week={ week } />
         <div className={`main-info ${ item.userStatus ? '' : 'mein' } text clear`}>
-            <div className="portrait">
-                {
-                    !item.profilePhoto && !item.userStatus ? <img src={ userInfo.userImg } width="100%" /> : <img src={ item.profilePhoto } width="100%" />
-                }
-            </div>
+            <Portrait item={ item } userInfo={ userInfo } />
             <div className="content">
                 <p className="info">{ item.content }</p>
             </div>
@@ -17,15 +14,11 @@ const Text = ({item, userInfo, week}) => (
     </li>
 );
 
-const Picture = ({item, userInfo, week, picLoading}) => (
+const Picture = ({ item, userInfo, week, picLoading }) => (
     <li className="message-box">
         <TimeBar createTime={ item.createTime } week={ week } />
         <div className={`main-info ${ item.userStatus ? '' : 'mein' } picture clear`}>
-            <div className="portrait">
-                {
-                    !item.profilePhoto && !item.userStatus ? <img src={ userInfo.userImg } width="100%" /> : <img src={ item.profilePhoto } width="100%" />
-                }
-            </div>
+            <Portrait item={ item } userInfo={ userInfo } />
             <div className="content">
                 <div className="image"><img width="100%" src={ item.content } onLoad={ () => window.scrollTo(0, document.body.clientHeight - window.outerHeight) } /></div>
             </div>
@@ -33,4 +26,22 @@ const Picture = ({item, userInfo, week, picLoading}) => (
     </li>
 );
 
-export { Text, Picture };
+const Default = ({ item, userInfo, week }) => (
+    <li className="message-box">
+        <TimeBar createTime={ new Date() } week={ week } />
+        <div className="main-info text clear">
+            <Portrait item={ item } userInfo={ userInfo } />
+            <div className="content">
+                <p className="info">来啦～～随便坐啊</p>
+                <p className="info">下面的热点问题是小狐精心准备的，看看能解决您的问题不？</p>
+                <a href="#" className="nav-link">播放问题</a>
+                <a href="#" className="nav-link">会员问题</a>
+                <a href="#" className="nav-link">缓存问题</a>
+                <a href="#" className="nav-link">查看其他热点问题</a>
+                <p className="info">如果仍然无法解决，可以直接输入你的问题，小狐狸帮您看看！</p>
+            </div>
+        </div>
+    </li>
+);
+
+export { Text, Picture, Default };
