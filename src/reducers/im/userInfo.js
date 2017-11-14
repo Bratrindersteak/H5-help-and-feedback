@@ -7,6 +7,8 @@ const userInfo = (state = USER_INFO, action) => {
     switch (action.type) {
         case GET_USER_INFO:
             return Object.assign({}, state, action.payload.userInfo, {
+                plat: parseInt(action.payload.userInfo.plat, 10),
+                poid: parseInt(action.payload.userInfo.poid, 10),
                 token: '',
             });
         case FETCH_WS_TOKEN_SUCCESS:
