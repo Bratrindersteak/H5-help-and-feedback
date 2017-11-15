@@ -68,7 +68,7 @@ const connectWebsocket = (userInfo) => {
     };
 
     return (dispatch, getState) => {
-        ws = new WebSocket(DEV_WEB_SOCKET_URL);
+        ws = new WebSocket(WEB_SOCKET_URL);
 
         ws.onopen = () => {
             dispatch(connectWebsocketRequest());

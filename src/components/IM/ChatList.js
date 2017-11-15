@@ -10,10 +10,19 @@ class ChatList extends Component {
         const { list, userInfo, week, fetchChatListToken, picLoading } = this.props;
 
         return (
-            <ul className="message-list" onTouchEnd={ () => {
+            <ul className="message-list" onTouchEnd={ (event) => {
+
+                console.log( event.nativeEvent );
+                console.log( event.timeStamp );
 
                 if (window.scrollY === 0) {
-                     fetchChatListToken();
+                    console.log( 'here' );
+                     // fetchChatListToken();
+                }
+            } } onTouchMove={ (event) => {
+
+                if (window.scrollY === 0) {
+                    alert( event.currentTarget );
                 }
             } }>
                 {

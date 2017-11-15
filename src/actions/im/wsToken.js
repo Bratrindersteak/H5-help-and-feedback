@@ -37,7 +37,7 @@ const fetchWSToken = () => {
     return (dispatch) => {
         dispatch(fetchWSTokenRequest());
 
-        fetch(`${ DEV_WEB_SOCKET_TOKEN }getHttpInfo`, {
+        fetch(`${ WEB_SOCKET_TOKEN }getHttpInfo`, {
             method: 'GET',
         }).then((response) =>
             response.json()

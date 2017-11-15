@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import ChatList from '../../containers/IM/ChatList';
 import Send from '../../containers/IM/Send';
 
-if (window.SohuAppPrivates) {
-    alert(window.SohuAppPrivates);
-}
-
 class IM extends Component {
     componentWillMount() {
         let count = 0;
