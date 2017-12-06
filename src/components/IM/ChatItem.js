@@ -2,6 +2,18 @@ import React from 'react';
 import TimeBar from './TimeBar';
 import Portrait from './Portrait';
 
+const Log = ({ item, userInfo, week }) => (
+    <li className="message-box">
+        <TimeBar createTime={ item.createTime } week={ week } />
+        <div className={`main-info ${ item.userStatus ? '' : 'mein' } text clear`}>
+            <Portrait item={ item } userInfo={ userInfo } />
+            <div className="content">
+                <p className="info">{ item.content }</p>
+            </div>
+        </div>
+    </li>
+);
+
 const Text = ({ item, userInfo, week }) => (
     <li className="message-box">
         <TimeBar createTime={ item.createTime } week={ week } />
@@ -34,14 +46,14 @@ const Default = ({ item, userInfo, week }) => (
             <div className="content">
                 <p className="info">来啦～～随便坐啊</p>
                 <p className="info">下面的热点问题是小狐精心准备的，看看能解决您的问题不？</p>
-                <a href="#" className="nav-link">播放问题</a>
+                <a href="./list.html?id=1220&sver=&plat=17&clientVer=" className="nav-link">播放问题</a>
                 <a href="#" className="nav-link">会员问题</a>
                 <a href="#" className="nav-link">缓存问题</a>
-                <a href="#" className="nav-link">查看其他热点问题</a>
+                <a href="./feedback/contact.html" className="nav-link">查看其他热点问题</a>
                 <p className="info">如果仍然无法解决，可以直接输入你的问题，小狐狸帮您看看！</p>
             </div>
         </div>
     </li>
 );
 
-export { Text, Picture, Default };
+export { Log, Text, Picture, Default };

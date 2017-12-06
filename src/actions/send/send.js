@@ -48,6 +48,12 @@ const sendFeedback = (senderUid, textarea, img, input) => {
         }
     }
 
+    if (!/^[1-9][0-9]{5,11}$/.test(input.value) && !/^1[34578]\d{9}$/.test(input.value) && !/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/.test(input.value)) {
+        return (dispatch) => {
+            dispatch(contactValueInvalid());
+        }
+    }
+
     let messageDataText = {
         cmd: 10,
         seq: 'msgImCustomer',

@@ -20,7 +20,7 @@ const Description = ({ text, sendBox, writingDescription, rewritingDescription, 
                 text.picture.src
                     ?
                 <div className="preview">
-                    <i className="delete-icon" onTouchEnd={ () => deletePic(img.src) }></i>
+                    <i className="delete-icon" onTouchEnd={ () => deletePic(img.src) } />
                     <img className="upload-pic" src={ text.picture.src } ref={ (node) => img = node } />
                 </div>
                     :

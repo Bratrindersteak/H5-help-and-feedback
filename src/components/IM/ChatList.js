@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Picture, Default } from "./ChatItem";
+import { Log, Text, Picture, Default } from "./ChatItem";
 
 class ChatList extends Component {
     componentDidUpdate() {
@@ -28,8 +28,12 @@ class ChatList extends Component {
                 {
                     list.map((item, index) => {
 
-                        if (item.msgType === 0) {
+                        if (item.msgType === 100) {
                             return <Default key={ index.toString() } item={ item } userInfo={ userInfo } week={ week } />;
+                        }
+
+                        if (item.msgType === 0) {
+                            return <Log key={ index.toString() } item={ item } userInfo={ userInfo } week={ week } />
                         }
 
                         if (item.msgType === 1) {

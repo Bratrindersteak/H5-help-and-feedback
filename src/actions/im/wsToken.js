@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { WEB_SOCKET_TOKEN, DEV_WEB_SOCKET_TOKEN } from '../../../config';
+import { WEB_SOCKET_TOKEN } from '../../../config';
 
 const FETCH_WS_TOKEN = 'FETCH_WS_TOKEN';
 const FETCH_WS_TOKEN_REQUEST = 'FETCH_WS_TOKEN_REQUEST';

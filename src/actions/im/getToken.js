@@ -1,5 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { DOMAIN, TEST_DOMAIN, DEV_DOMAIN } from '../../../config';
+import { DOMAIN } from '../../../config';
 import { fetchChatList } from './chatList';
 
 const FETCH_CHAT_LIST_TOKEN = 'FETCH_CHAT_LIST_TOKEN';
@@ -36,7 +36,7 @@ const fetchChatListToken = (feedbackId) => {
     return (dispatch) => {
         dispatch(fetchChatListTokenRequest());
 
-        fetch(`${ TEST_DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
+        fetch(`${ DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
             method: 'GET',
         }).then((response) =>
             response.json()

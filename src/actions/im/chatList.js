@@ -1,5 +1,5 @@
-// import fetch from 'isomorphic-fetch';
-import { DOMAIN, TEST_DOMAIN, DEV_DOMAIN } from '../../../config';
+import fetch from 'isomorphic-fetch';
+import { DOMAIN } from '../../../config';
 
 const FETCH_CHAT_LIST = 'FETCH_CHAT_LIST';
 const FETCH_CHAT_LIST_REQUEST = 'FETCH_CHAT_LIST_REQUEST';
@@ -33,11 +33,18 @@ const fetchChatListFailure = (error) => {
     }
 };
 
-const fetchChatList = (token, feedbackId = 1, page = listPage, size = 10) => {
+const fetchChatList = (token, feedbackId, page = listPage, size = 10) => {
+
+    if (!feedbackId) {
+        return (dispatch) => {
+            dispatch(fetchChatListFailure());
+        }
+    }
+
     return (dispatch) => {
         dispatch(fetchChatListRequest());
 
-        fetch(`${ TEST_DOMAIN }open/message/chatlog/list?feedbackId=${ feedbackId }&page=${ page }&size=${ size }`, {
+        fetch(`${ DOMAIN }open/message/chatlog/list?feedbackId=${ feedbackId }&page=${ page }&size=${ size }`, {
             method: 'GET',
             credentials: 'include',
             headers: {

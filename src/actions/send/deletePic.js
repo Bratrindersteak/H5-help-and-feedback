@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { DOMAIN, TEST_DOMAIN, DEV_DOMAIN } from '../../../config';
-import { fetchChatListToken, fetchChatListTokenRequest, fetchChatListTokenSuccess, fetchChatListTokenFailure } from '../im/getToken';
+import { DOMAIN } from '../../../config';
 
 const DELETE_PIC = 'DELETE_PIC';
 const DELETE_PIC_REQUEST = 'DELETE_PIC_REQUEST';
@@ -36,7 +35,7 @@ const deletePicFailure = () => {
 
 const deletePic = (src) => {
     return (dispatch) => {
-        fetch(`${ TEST_DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
+        fetch(`${ DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
             method: 'GET',
         }).then((response) =>
             response.json()

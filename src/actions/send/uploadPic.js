@@ -1,6 +1,5 @@
 import fetch from 'isomorphic-fetch';
-import { DOMAIN, TEST_DOMAIN, DEV_DOMAIN } from '../../../config';
-import { fetchChatListToken, fetchChatListTokenRequest, fetchChatListTokenSuccess, fetchChatListTokenFailure } from '../im/getToken';
+import { DOMAIN } from '../../../config';
 
 const UPLOAD_PIC = 'UPLOAD_PIC';
 const UPLOAD_PIC_REQUEST = 'UPLOAD_PIC_REQUEST';
@@ -37,7 +36,7 @@ const uploadPicFailure = () => {
 
 const uploadPic = (files) => {
     return (dispatch) => {
-        fetch(`${ TEST_DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
+        fetch(`${ DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
             method: 'GET',
         }).then((response) =>
             response.json()
@@ -49,7 +48,7 @@ const uploadPic = (files) => {
 
             dispatch(uploadPicRequest());
 
-            fetch(`${ TEST_DOMAIN }open/sohucloud/upload`, {
+            fetch(`${ DOMAIN }open/sohucloud/upload`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

@@ -1,4 +1,4 @@
-import { WEB_SOCKET_URL, DEV_WEB_SOCKET_URL } from '../../../config';
+import { WEB_SOCKET_URL } from '../../../config';
 import { fetchChatListToken } from './getToken';
 import { addChatItem } from './chatItem';
 import { rewritingDescription } from '../send/description';
@@ -56,7 +56,7 @@ const connectWebsocket = (userInfo) => {
             contactInfo2: '',
             appVersion: userInfo.sver,
             system: userInfo.sysver,
-            // channelId: 342343429443,  will add in app
+            channelId: userInfo.partner,
             pn: userInfo.ua,
             poid: userInfo.poid,
             plat: userInfo.plat,

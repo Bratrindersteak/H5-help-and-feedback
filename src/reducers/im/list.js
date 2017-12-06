@@ -7,7 +7,7 @@ const list = (state = [], action) => {
 
             if (state.length === 0 && action.payload.data.length === 0) {
                 return [{
-                    msgType: 0,
+                    msgType: 100,
                     userStatus: 1,
                 }];
             }
@@ -27,6 +27,11 @@ const list = (state = [], action) => {
             }
 
             return state;
+        case FETCH_CHAT_LIST_FAILURE:
+            return [{
+                msgType: 100,
+                userStatus: 1,
+            }];
         case ADD_CHAT_ITEM:
             return [
                 ...state,
