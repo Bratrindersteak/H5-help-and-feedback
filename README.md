@@ -2,8 +2,7 @@
 > Only develop for **SohuTV Native Application** now
 
 - 技术栈
-
-  - React
+  - React
   - React-dom
   - Redux
   - React-redux
@@ -11,8 +10,7 @@
   - sass
   
 - 功能模块
-
-  - IM(意见反馈)
+  - IM(意见反馈)
     - list(展示模块)
 	  - WebSocket连接
 	  
