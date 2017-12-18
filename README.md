@@ -1,7 +1,7 @@
 # 帮助与反馈H5改版
 > Only develop for **SohuTV Native Application** now
 
-- 技术支持
+- 技术栈
   - React
   - React-dom
   - Redux
@@ -9,7 +9,7 @@
   - webpack
   - sass
   
-- 功能文档
+- 功能模块
   - IM(意见反馈)
     - list(展示模块)
 	  - WebSocket连接
@@ -28,4 +28,4 @@
 	 
 	 - 发送按钮(发送成功后隐藏发送模块)
   
-  - contact(联系我们)
+   - ~~contact(联系我们)~~
