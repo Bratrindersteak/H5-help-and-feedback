@@ -1,5 +1,6 @@
 import SEND from '../../../jsons/send.json';
 import { WRITING_DESCRIPTION, DESCRIPTION_VALUE_INVALID, REWRITING_DESCRIPTION } from '../../../actions/send/description';
+import { UPLOAD_PIC_SUCCESS } from "../../../actions/send/uploadPic";
 
 const textarea = (state = SEND.description.textarea, action) => {
     switch (action.type) {
@@ -17,6 +18,16 @@ const textarea = (state = SEND.description.textarea, action) => {
                 value: '',
                 color: '',
             });
+        case UPLOAD_PIC_SUCCESS:
+
+            if (action.payload.warnColor) {
+                return Object.assign({}, state, {
+                    value: '',
+                    color: '',
+                });
+            }
+
+            return state;
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Portrait = ({ item, userInfo }) => {
-    let profile;
+    let profile = item.profilePhoto;
 
     if (!item.profilePhoto && !item.userStatus) {
         profile = userInfo.userImg;

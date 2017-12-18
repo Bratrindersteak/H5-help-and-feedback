@@ -2,34 +2,31 @@ import React, { Component } from 'react';
 import { Log, Text, Picture, Default } from "./ChatItem";
 
 class ChatList extends Component {
+    componentDidMount() {
+        const { userInfo, fetchNav } = this.props;
+
+        fetchNav(userInfo.plat, userInfo.sver);
+    }
+
     componentDidUpdate() {
         window.scrollTo(0, document.body.clientHeight - window.outerHeight);
     }
 
     render() {
-        const { list, userInfo, week, fetchChatListToken, picLoading } = this.props;
+        const { list, userInfo, week, nav, fetchChatListToken, picLoading } = this.props;
 
         return (
-            <ul className="message-list" onTouchEnd={ (event) => {
+            <ul className="message-list" onTouchEnd={(event) => {
 
-                console.log( event.nativeEvent );
-                console.log( event.timeStamp );
-
-                if (window.scrollY === 0) {
-                    console.log( 'here' );
-                     // fetchChatListToken();
+                if (window.scrollY <= 0 && list.length) {
+                    fetchChatListToken(userInfo.feedbackId, list.length, 10);
                 }
-            } } onTouchMove={ (event) => {
-
-                if (window.scrollY === 0) {
-                    alert( event.currentTarget );
-                }
-            } }>
+            }}>
                 {
                     list.map((item, index) => {
 
                         if (item.msgType === 100) {
-                            return <Default key={ index.toString() } item={ item } userInfo={ userInfo } week={ week } />;
+                            return <Default key={ index.toString() } item={ item } userInfo={ userInfo } week={ week } nav={ nav } />;
                         }
 
                         if (item.msgType === 0) {

@@ -46,7 +46,7 @@ const deletePic = (src) => {
 
             dispatch(deletePicRequest());
 
-            fetch(`${ TEST_DOMAIN }open/sohucloud/delete`, {
+            fetch(`${ DOMAIN }open/sohucloud/delete`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {

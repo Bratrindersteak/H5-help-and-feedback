@@ -16,11 +16,12 @@ const uploadPicRequest = () => {
     }
 };
 
-const uploadPicSuccess = (src) => {
+const uploadPicSuccess = (src, warnColor) => {
     return {
         type: UPLOAD_PIC_SUCCESS,
         payload: {
             src,
+            warnColor,
         },
     }
 };
@@ -34,7 +35,7 @@ const uploadPicFailure = () => {
     }
 };
 
-const uploadPic = (files) => {
+const uploadPic = (files, isEmptyVal) => {
     return (dispatch) => {
         fetch(`${ DOMAIN }open/auth/token?uid=Client_${ new Date().getTime() }`, {
             method: 'GET',
@@ -59,7 +60,7 @@ const uploadPic = (files) => {
                 response.json()
             ).then((json) => {
                 console.log( json );
-                dispatch(uploadPicSuccess(json.data));
+                dispatch(uploadPicSuccess(json.data, isEmptyVal));
             }).catch((error) => {
                 dispatch(uploadPicFailure(error));
             });

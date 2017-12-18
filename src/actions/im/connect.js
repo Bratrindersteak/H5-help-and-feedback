@@ -22,11 +22,11 @@ const connectWebsocketRequest = () => {
     }
 };
 
-const connectWebsocketSuccess = () => {
+const connectWebsocketSuccess = (feedbackId) => {
     return {
         type: CONNECT_WEBSOCKET_SUCCESS,
         payload: {
-
+            feedbackId,
         }
     }
 };
@@ -52,7 +52,7 @@ const connectWebsocket = (userInfo) => {
             username: userInfo.nickname,
             profilePhoto: userInfo.userImg,
             passport: userInfo.passport,
-            contactInfo1: userInfo.mobile,
+            contactInfo1: '',
             contactInfo2: '',
             appVersion: userInfo.sver,
             system: userInfo.sysver,
@@ -81,11 +81,19 @@ const connectWebsocket = (userInfo) => {
             if (data.cmd === 4) {
 
                 if (data.body.result === 0) {
-                    dispatch(connectWebsocketSuccess());
-                    dispatch(fetchChatListToken(data.body.feedbackId));
+                    dispatch(connectWebsocketSuccess(data.body.feedbackId));
+                    dispatch(fetchChatListToken(data.body.feedbackId, 0, 10));
                 } else {
                     dispatch(connectWebsocketFilture(data.body.reason));
                 }
+
+                let IMHeart = setInterval(() => {
+                    ws.send(JSON.stringify({
+                        cmd: 2,
+                        seq: "heart",
+                        body: {},
+                    }))
+                }, 20000);
             }
 
             if (data.cmd === 5) {
@@ -97,12 +105,17 @@ const connectWebsocket = (userInfo) => {
             }
 
             if (data.cmd === 10) {
-                dispatch(addChatItem(data.body));
+
+                if (data.body.msgSystem) {
+                    setTimeout(() => dispatch(addChatItem(data.body)), 200);
+                } else {
+                    dispatch(addChatItem(data.body));
+                }
             }
         };
 
         ws.onclose = () => {
-            console.log( 'The connection is closed' );
+            window.location.reload();
         };
     }
 };

@@ -36,7 +36,7 @@ const sendFeedbackFailure = () => {
 
 const sendFeedback = (senderUid, textarea, img, input) => {
 
-    if (!textarea.value || textarea.style.color) {
+    if ((!textarea.value && !img) || textarea.style.color) {
         return (dispatch) => {
             dispatch(descriptionValueInvalid());
         }
@@ -64,36 +64,41 @@ const sendFeedback = (senderUid, textarea, img, input) => {
             isRead: 0,
             msgId: 0,
             msgType: 1,
-            content: textarea.value,
+            content: encodeURI(textarea.value),
             contactInfo2: input.value,
         }
     };
 
-    return (dispatch) => {
-        dispatch(sendFeedbackRequest());
+    let messageDataPic = {
+        cmd: 10,
+        seq: 'msgImCustomer',
+        body: {
+            senderUid: senderUid,
+            receiverUid: '',
+            userStatus: 0,
+            isRead: 0,
+            msgId: 0,
+            msgType: 2,
+            content: img ? img.src : '',
+            savable: true,
+        }
+    };
 
-        ws.send(JSON.stringify(messageDataText));
+    return (dispatch) => {
+
+        if (textarea && textarea.value) {
+            dispatch(sendFeedbackRequest());
+
+            ws.send(JSON.stringify(messageDataText));
+        }
 
         if (img && img.src) {
-            let messageDataPic = {
-                cmd: 10,
-                seq: 'msgImCustomer',
-                body: {
-                    senderUid: senderUid,
-                    receiverUid: '',
-                    userStatus: 0,
-                    isRead: 0,
-                    msgId: 0,
-                    msgType: 2,
-                    content: img.src,
-                    savable: true,
-                }
-            };
-
             dispatch(sendFeedbackRequest());
 
             ws.send(JSON.stringify(messageDataPic));
         }
+
+        localStorage.setItem('imContactValue', input.value);
     }
 };
 

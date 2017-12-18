@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import ChatList from '../../containers/IM/ChatList';
 import Send from '../../containers/IM/Send';
+import { ws } from "../../actions/im/connect";
 
 class IM extends Component {
-    componentWillMount() {
+    componentDidMount() {
         let count = 0;
         let timer = setInterval(() => {
 
@@ -28,18 +29,22 @@ class IM extends Component {
         }, 50);
     }
 
-    render() {
-        const { display, userInfo } = this.props;
+    componentDidUpdate() {
+        const { userInfo, status, connectWebsocket } = this.props;
 
-        if (userInfo.token) {
-            this.props.connectWebsocket(userInfo);
+        if (!ws && userInfo.uid && userInfo.token && !status.connected) {
+            connectWebsocket(userInfo);
         }
+    }
+
+    render() {
+        const { display } = this.props;
 
         return (
             <div className="im" style={{ display: display }}>
                 <ChatList />
                 <Send />
-                <div className="loading-icon transparent" id="loading"></div>
+                <div className="loading-icon transparent" id="loading" />
                 <div className="display-layer" id="displayLayer" style={{ display: 'none' }}><img className="wide reset" src="" /></div>
             </div>
         );

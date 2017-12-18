@@ -7,6 +7,7 @@ import { connectWebsocket } from "../../actions/im/connect";
 const mapStateToProps = (state, ownProps) => ({
     display: state.display.im,
     userInfo: state.userInfo,
+    status: state.status,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {

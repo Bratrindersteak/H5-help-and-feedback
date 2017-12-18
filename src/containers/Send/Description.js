@@ -3,6 +3,7 @@ import { Description as DescriptionUI } from '../../components/Send/Description'
 import { writingDescription, rewritingDescription } from '../../actions/send/description';
 import { uploadPic } from '../../actions/send/uploadPic';
 import { deletePic } from '../../actions/send/deletePic';
+import { viewResize } from "../../actions/send/resize";
 
 const mapStateToProps = (state, ownProps) => ({
     text: state.description,
@@ -17,11 +18,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         rewritingDescription: () => {
             dispatch(rewritingDescription());
         },
-        uploadPic: (files) => {
-            dispatch(uploadPic(files));
+        uploadPic: (files, warnColor) => {
+            dispatch(uploadPic(files, warnColor));
         },
         deletePic: (src) => {
             dispatch(deletePic(src));
+        },
+        focus: () => {
+            dispatch(viewResize());
         },
     }
 };

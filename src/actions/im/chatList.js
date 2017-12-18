@@ -6,8 +6,6 @@ const FETCH_CHAT_LIST_REQUEST = 'FETCH_CHAT_LIST_REQUEST';
 const FETCH_CHAT_LIST_SUCCESS = 'FETCH_CHAT_LIST_SUCCESS';
 const FETCH_CHAT_LIST_FAILURE = 'FETCH_CHAT_LIST_FAILURE';
 
-let listPage = 1;
-
 const fetchChatListRequest = () => {
     return {
         type: FETCH_CHAT_LIST_REQUEST,
@@ -33,7 +31,7 @@ const fetchChatListFailure = (error) => {
     }
 };
 
-const fetchChatList = (token, feedbackId, page = listPage, size = 10) => {
+const fetchChatList = (token, feedbackId, offset, size) => {
 
     if (!feedbackId) {
         return (dispatch) => {
@@ -44,19 +42,17 @@ const fetchChatList = (token, feedbackId, page = listPage, size = 10) => {
     return (dispatch) => {
         dispatch(fetchChatListRequest());
 
-        fetch(`${ DOMAIN }open/message/chatlog/list?feedbackId=${ feedbackId }&page=${ page }&size=${ size }`, {
+        fetch(`${ DOMAIN }open/message/chatlog/list?feedbackId=${ feedbackId }&offset=${ offset }&size=${ size }`, {
             method: 'GET',
             credentials: 'include',
             headers: {
-                'Authorization': token
-            }
+                'Authorization': token,
+            },
         }).then((response) =>
             response.json()
         ).then((json) => {
             console.log( json );
             dispatch(fetchChatListSuccess(json.data));
-
-            listPage += 1;
         }).catch((error) => {
             dispatch(fetchChatListFailure(error));
         });
